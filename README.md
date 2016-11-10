@@ -14,3 +14,5 @@ Auto Shutdown Program for Windows
 </ul>
  <p> Don't just waste hours waiting until your computer finishers coping large files, rendering videos, or some other process to shut it down. Use the product "Power" and protect your valuable time.
 </p>
+<p><a href="http://roshsoftco.blogspot.com/p/power.html">ROSHSOFT : Power</a><br />
+Visit the above link and download the latest version of Power to your Windows PC.</p>
