@@ -165,7 +165,7 @@
         XTesb3QPLh88M+QwdP6m681Lt7xuXbu94vbgcOjwnZHokdE77DtTd1PuvriXeW/h/sYH6AdFD6UeVjxS
         fNTws+7PbaOWo6fHXMf6Hwc/vj/OGn/2S8Yv7ycKnpCfVEyqTDZPmU2dmnafvvF05dOJZ+nPFmYKf5X+
         tfa5zvMffnP8rX82YnbiBf/Fp99LXsq/PPRq2aueuYC5R69TXy/MF72Rf3P4LeNt37vwd5MLWe+x7ys/
-        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAALDwAACw8BkvkDpQAAGOhJREFUeF7t2kFOW1kU
+        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAALEQAACxEBf2RfkQAAGOhJREFUeF7t2kFOW1kU
         RVGGnqGDiEBxQMbf7M7RWyVVL0HPW8vRual6eXnunz9vv82/GjDAAAMMMMDACQaeW0sXftcJEX1Gf1gw
         wAADDDDAwHcGLkymx34paKAxwAADDDDAAAN/DST/iOkLxQADDDDAAAMM3Bp4emQJ6cvEAAMMMMAAAwzc
         N3BpaInpC8UAAwwwwAADDDxm4KGRJeZjMXXSiQEGGGCAAQY+DPw4smCBhQEGGGCAAQYYuGbg7sAS81pM
@@ -305,10 +305,10 @@ Choose the specific time and the date and click Proceed to issue the command.
 Method 2 : Countdown Trigger
 Choose this to proceed in a countdown method, give the values and click Proceed.
 
-We recommend you to check the ‘Warn me before executing command(s)’, so when the time comes or the countdown ends, the software will warn you before executing commands, otherwise commands will be executed without a final warning, and any unsaved data can be lost.
+We recommend you to check the ‘Ask me before executing command(s)’, so when the time comes or the countdown ends, the software will ask your permission to execute commands, otherwise commands will be executed without your permission, and any unsaved data can be lost. Use at your own risk.
 
 Extra :
-Set your preferred option (Specific Time / Countdown Trigger) to default using the ‘Settings Panel’. Run in administrator mode for more reliable actions.
+Choose your preferred option (Specific Time / Countdown Trigger) from the ‘Settings Panel’. So it will be the default method.
 </value>
   </data>
   <data name="body2.Text" xml:space="preserve">

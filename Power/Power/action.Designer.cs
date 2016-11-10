@@ -192,6 +192,7 @@
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(42, 26);
             this.numericUpDown1.TabIndex = 8;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // Hnud
             // 
@@ -265,7 +266,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.Location = new System.Drawing.Point(379, 355);
+            this.button1.Location = new System.Drawing.Point(376, 375);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 35);
             this.button1.TabIndex = 11;
@@ -285,7 +286,7 @@
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.Location = new System.Drawing.Point(485, 355);
+            this.button2.Location = new System.Drawing.Point(482, 375);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 35);
             this.button2.TabIndex = 12;
@@ -328,7 +329,7 @@
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panel2.Cursor = System.Windows.Forms.Cursors.Default;
             this.panel2.ForeColor = System.Drawing.Color.SkyBlue;
-            this.panel2.Location = new System.Drawing.Point(228, 251);
+            this.panel2.Location = new System.Drawing.Point(228, 261);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(450, 2);
             this.panel2.TabIndex = 47;
@@ -340,7 +341,7 @@
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panel1.Cursor = System.Windows.Forms.Cursors.Default;
             this.panel1.ForeColor = System.Drawing.Color.SkyBlue;
-            this.panel1.Location = new System.Drawing.Point(228, 103);
+            this.panel1.Location = new System.Drawing.Point(228, 113);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(450, 2);
             this.panel1.TabIndex = 36;
@@ -550,11 +551,11 @@
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.checkBox1.ForeColor = System.Drawing.Color.White;
-            this.checkBox1.Location = new System.Drawing.Point(26, 363);
+            this.checkBox1.Location = new System.Drawing.Point(16, 385);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(301, 20);
+            this.checkBox1.Size = new System.Drawing.Size(291, 20);
             this.checkBox1.TabIndex = 10;
-            this.checkBox1.Text = "Warn me before executing command(s)";
+            this.checkBox1.Text = "Ask me before executing command(s)";
             this.checkBox1.UseVisualStyleBackColor = false;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
@@ -605,7 +606,7 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImage = global::Power.Properties.Resources.back;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(594, 402);
+            this.ClientSize = new System.Drawing.Size(594, 422);
             this.Controls.Add(this.ico);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label13);

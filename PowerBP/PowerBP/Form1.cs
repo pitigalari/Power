@@ -19,11 +19,11 @@ namespace PowerBP
             InitializeComponent();
         }
 
-        public static Process check = new Process();
-        public static string type;
-        public static string command;
-        public string BTip;
-        public static int CT;
+        Process check = new Process();
+        string type;
+        string command;
+        string BTip;
+        int CT;
         int H;
         int M;
         int D;
@@ -32,10 +32,9 @@ namespace PowerBP
         string timeLbl;
         int ask = 1;
         string location;
-        bool finalBTipShown = false;
 
         [DllImport("user32.dll")]
-        public static extern int SendMessage(int hWnd, int hMsg, int wParam, int lParam);
+        private static extern int SendMessage(int hWnd, int hMsg, int wParam, int lParam);
 
         private void Form1_Shown(object sender, EventArgs e)
         {
@@ -46,21 +45,7 @@ namespace PowerBP
 
         private void openPowerUIToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (File.Exists(@"Power.exe"))
-            {
-                try
-                {
-                    Process.Start(@"Power.exe");
-                }
-                catch
-                {
-                    MessageBox.Show("An unexpected error occurred. Please try again.", "PowerUI Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Failed to start Power User Interface. Try reinstalling the application.", "PowerUI Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            Process.Start(@"Power.exe");
         }
 
         private void exitToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -78,7 +63,7 @@ namespace PowerBP
         {
             this.Hide();
             #region Set Path
-            location = Program.location;
+            location = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "RoshSoft\\");
             if (!Directory.Exists(location))
             {
                 Directory.CreateDirectory(location);
@@ -96,7 +81,7 @@ namespace PowerBP
                     if (richTextBox1.Text == "NA")
                     {
                         notifyIcon1.Dispose();
-                        MessageBox.Show("The application is temporary unavailable or you have no authorized permission to access it.", "PowerBP - Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("The application is temporary unavailable or you have no authorized permission to access it.", "Application inaccessible", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Application.Exit();
                     }
                     else if (richTextBox1.Lines[0] == "CT" || richTextBox1.Lines[0] == "ST")
@@ -121,7 +106,7 @@ namespace PowerBP
                     else
                     {
                         notifyIcon1.Dispose();
-                        MessageBox.Show("Error Code : PBP3005-2\n\nAn unidentified error has occurred application will now exit.\nPlease report the error code to RoshSoft Co. Sorry for the inconvenience caused.", "PowerBP - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error Code : PBP3005-2\n\nAn unhandled exception has occurred application will now exit.\nPlease report the error code to RoshSoft Co. Sorry for the inconvenience caused.", "PowerBP - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Application.Exit();
                     }
 
@@ -177,7 +162,7 @@ namespace PowerBP
 
                 }
                 #endregion
-               
+
                 #region Timer Start
                 {
                     #region CT
@@ -230,7 +215,7 @@ namespace PowerBP
             else
             {
                 notifyIcon1.Dispose();
-                MessageBox.Show("The application is temporary unavailable or you have no authorized permission to access it.", "PowerBP - Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("The application is temporary unavailable or you have no authorized permission to access it.", "Application inaccessible", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }
@@ -248,7 +233,7 @@ namespace PowerBP
 
         private void aboutPowerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Power Background Process\n\nVersion : "+Program.version+"\nApplication Developer : Roshana Pitigala\n\n© RoshSoft Co.", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Power Background Process\n\nVersion : 7. 15. 09. 26\nApplication Developer : Roshana Pitigala\n\n© RoshSoft Co.", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public void timer1_Tick(object sender, EventArgs e)
@@ -286,52 +271,110 @@ namespace PowerBP
                 File.WriteAllText(location + "power.dll", "NA");
                 this.Hide();
 
-                if (command == "SD")
+                if (ask == 1)
                 {
-                    check.StartInfo.Arguments = "/c shutdown -s -t 1";
-                    check.Start();
-                    Application.Exit();
-                }
-                else if (command == "R")
-                {
-                    check.StartInfo.Arguments = "/c shutdown -r -t 1";
-                    check.Start();
-                    Application.Exit();
-                }
-                else if (command == "H")
-                {
-                    check.StartInfo.Arguments = "/c shutdown -h";
-                    check.Start();
-                    Application.Exit();
-                }
-                else if (command == "SB")
-                {
-                    Application.SetSuspendState(PowerState.Suspend, true, true);
-                    Application.Exit();
-                }
-                else if (command == "lock")
-                {
-                    check.StartInfo.Arguments = "/c rundll32.exe user32.dll, LockWorkStation";
-                    check.Start();
-                    Application.Exit();
-                }
-                else if (command == "LO")
-                {
-                    check.StartInfo.Arguments = "/c shutdown -l";
-                    check.Start();
-                    Application.Exit();
-                }
-                else if (command == "SO")
-                {
-                    SendMessage(this.Handle.ToInt32(), 0x0112, 0xF170, 2);
-                    Application.Exit();
-                }
-                else
-                {
-                    MessageBox.Show("Error Code : PBP3005-1\n\nAn unhandled exception has occurred application will now exit.\nPlease report the error code to RoshSoft Co. Sorry for the inconvenience caused.", "PowerBP - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Application.Exit();
+                    if (MessageBox.Show(BTip + " command is about to execute. Do you wish to proceed?", "PowerBP", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        if (command == "SD")
+                        {
+                            check.StartInfo.Arguments = "/c shutdown -s -t 1";
+                            check.Start();
+                            Application.Exit();
+                        }
+                        else if (command == "R")
+                        {
+                            check.StartInfo.Arguments = "/c shutdown -r -t 1";
+                            check.Start();
+                            Application.Exit();
+                        }
+                        else if (command == "H")
+                        {
+                            check.StartInfo.Arguments = "/c shutdown -h";
+                            check.Start();
+                            Application.Exit();
+                        }
+                        else if (command == "SB")
+                        {
+                            Application.SetSuspendState(PowerState.Suspend, true, true);
+                            Application.Exit();
+                        }
+                        else if (command == "lock")
+                        {
+                            check.StartInfo.Arguments = "/c rundll32.exe user32.dll, LockWorkStation";
+                            check.Start();
+                            Application.Exit();
+                        }
+                        else if (command == "LO")
+                        {
+                            check.StartInfo.Arguments = "/c shutdown -l";
+                            check.Start();
+                            Application.Exit();
+                        }
+                        else if (command == "SO")
+                        {
+                            SendMessage(this.Handle.ToInt32(), 0x0112, 0xF170, 2);
+                            Application.Exit();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error Code : PBP3005-1\n\nAn unhandled exception has occurred application will now exit.\nPlease report the error code to RoshSoft Co. Sorry for the inconvenience caused.", "PowerBP - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Application.Exit();
+                        }
+                    }
+                    else
+                    {
+                        Application.Exit();
+                    }
                 }
 
+                else
+                {
+                    if (command == "SD")
+                    {
+                        check.StartInfo.Arguments = "/c shutdown -s -t 1";
+                        check.Start();
+                        Application.Exit();
+                    }
+                    else if (command == "R")
+                    {
+                        check.StartInfo.Arguments = "/c shutdown -r -t 1";
+                        check.Start();
+                        Application.Exit();
+                    }
+                    else if (command == "H")
+                    {
+                        check.StartInfo.Arguments = "/c shutdown -h";
+                        check.Start();
+                        Application.Exit();
+                    }
+                    else if (command == "SB")
+                    {
+                        Application.SetSuspendState(PowerState.Suspend, true, true);
+                        Application.Exit();
+                    }
+                    else if (command == "lock")
+                    {
+                        check.StartInfo.Arguments = "/c rundll32.exe user32.dll, LockWorkStation";
+                        check.Start();
+                        Application.Exit();
+                    }
+                    else if (command == "LO")
+                    {
+                        check.StartInfo.Arguments = "/c shutdown -l";
+                        check.Start();
+                        Application.Exit();
+                    }
+                    else if (command == "SO")
+                    {
+                        SendMessage(this.Handle.ToInt32(), 0x0112, 0xF170, 2);
+                        Application.Exit();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error Code : PBP3005-1\n\nAn unhandled exception has occurred application will now exit.\nPlease report the error code to RoshSoft Co. Sorry for the inconvenience caused.", "PowerBP - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Application.Exit();
+                    }
+                }
             }
             else
             {
@@ -360,11 +403,6 @@ namespace PowerBP
                         this.notifyIcon1.ShowBalloonTip(8, BTip + " command is about to execute", "You have Less than 30 seconds remaining.", ToolTipIcon.Warning);
                     }
                 }
-                else if (CT == 10 && ask == 1)
-                {
-                    contextMenuStrip1.Enabled = false;
-                    new warning().Show();
-                }
 
             }
         }
@@ -375,9 +413,9 @@ namespace PowerBP
             {
                 ask = 1;
             }
-            else if (checkBox1.Checked == false && (command == "SD" || command == "R" || command == "LO"))
+            else
             {
-                if (MessageBox.Show("Commands will be executed without a final warning which may cause lost of any unsaved data. Do you wish to proceed?", "Confirm Action", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                if (MessageBox.Show("Commands will be executed without your permission which may cause lost of any unsaved data. Use with your own risk. Do you wish to proceed?", "Confirm Action", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     ask = 0;
                 }
@@ -386,10 +424,6 @@ namespace PowerBP
                     checkBox1.Checked = true;
                     ask = 1;
                 }
-            }
-            else
-            {
-                ask = 0;
             }
         }
 
@@ -448,24 +482,74 @@ namespace PowerBP
                                 }
                                 else if (tempST == 1)
                                 {
-                                    timer3.Interval = 5000;
-                                    if(!finalBTipShown)
-                                    this.notifyIcon1.ShowBalloonTip(8, BTip + " command is about to execute", "You have Less than a minute remaining. Save your work.", ToolTipIcon.Warning);
-                                    finalBTipShown = true;
+                                    this.notifyIcon1.ShowBalloonTip(8, BTip + " command is about to execute", "You have Less than a minute remaining. Save your work. No more Popup messages will be displayed.", ToolTipIcon.Warning);
                                 }
                             }
                             else if (M == DateTime.Now.Minute)
                             {
                                 if (!Directory.Exists(location))
                                 {
-                                    Directory.CreateDirectory(location);                              }
+                                    Directory.CreateDirectory(location);
+                                }
                                 timer3.Dispose();
+                                notifyIcon1.Dispose();
                                 File.WriteAllText(location + "power.dll", "NA");
                                 this.Hide();
 
                                 if (ask == 1)
                                 {
-                                    new warning().Show();
+                                    if (MessageBox.Show(BTip + " command is about to execute. Do you wish to proceed?", "PowerBP", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                    {
+                                        if (command == "SD")
+                                        {
+                                            check.StartInfo.Arguments = "/c shutdown -s -t 1";
+                                            check.Start();
+                                            Application.Exit();
+                                        }
+                                        else if (command == "R")
+                                        {
+                                            check.StartInfo.Arguments = "/c shutdown -r -t 1";
+                                            check.Start();
+                                            Application.Exit();
+                                        }
+                                        else if (command == "H")
+                                        {
+                                            check.StartInfo.Arguments = "/c shutdown -h";
+                                            check.Start();
+                                            Application.Exit();
+                                        }
+                                        else if (command == "SB")
+                                        {
+                                            Application.SetSuspendState(PowerState.Suspend, true, true);
+                                            Application.Exit();
+                                        }
+                                        else if (command == "lock")
+                                        {
+                                            check.StartInfo.Arguments = "/c rundll32.exe user32.dll, LockWorkStation";
+                                            check.Start();
+                                            Application.Exit();
+                                        }
+                                        else if (command == "LO")
+                                        {
+                                            check.StartInfo.Arguments = "/c shutdown -l";
+                                            check.Start();
+                                            Application.Exit();
+                                        }
+                                        else if (command == "SO")
+                                        {
+                                            SendMessage(this.Handle.ToInt32(), 0x0112, 0xF170, 2);
+                                            Application.Exit();
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Error Code : PBP3005-1\n\nAn unhandled exception has occurred application will now exit.\nPlease report the error code to RoshSoft Co. Sorry for the inconvenience caused.", "PowerBP - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            Application.Exit();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Application.Exit();
+                                    }
                                 }
 
                                 else
@@ -530,41 +614,6 @@ namespace PowerBP
             {
                 notifyIcon1.Dispose();
                 Application.Exit();
-            }
-        }
-
-        private void warningToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new warning().Show();
-        }
-
-        private void GC_Tick(object sender, EventArgs e)
-        {
-            try
-            {
-                System.GC.Collect();
-            }
-            catch { }
-        }
-        public void exit() 
-        {
-            notifyIcon1.Dispose();
-            Application.Exit();
-        }
-
-        private void Form1_Deactivate(object sender, EventArgs e)
-        {
-            if (hide.Checked == false)
-            {
-                this.Hide();
-            }
-        }
-
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
-        {
-            if (hide.Checked)
-            {
-                this.TopMost = true;
             }
         }
 

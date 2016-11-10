@@ -34,15 +34,12 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.infoCMS = new System.Windows.Forms.ToolStripMenuItem();
             this.TimeCMS = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.openPowerUIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.showCommandWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abortthisCommandAndExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abortAllCommandsAndExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.aboutPowerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -59,8 +56,9 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.GC = new System.Windows.Forms.Timer(this.components);
-            this.hide = new System.Windows.Forms.CheckBox();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.openPowerUIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutPowerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,7 +69,6 @@
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "Power Background Process";
             this.notifyIcon1.Visible = true;
-            this.notifyIcon1.DoubleClick += new System.EventHandler(this.showCommandWindowToolStripMenuItem_Click);
             // 
             // contextMenuStrip1
             // 
@@ -102,20 +99,6 @@
             this.TimeCMS.Name = "TimeCMS";
             this.TimeCMS.Size = new System.Drawing.Size(227, 22);
             this.TimeCMS.Text = "Time";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(224, 6);
-            // 
-            // openPowerUIToolStripMenuItem
-            // 
-            this.openPowerUIToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.openPowerUIToolStripMenuItem.Image = global::PowerBP.Properties.Resources.icon;
-            this.openPowerUIToolStripMenuItem.Name = "openPowerUIToolStripMenuItem";
-            this.openPowerUIToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
-            this.openPowerUIToolStripMenuItem.Text = "Open Power User Interface";
-            this.openPowerUIToolStripMenuItem.Click += new System.EventHandler(this.openPowerUIToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -157,14 +140,6 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(224, 6);
             // 
-            // aboutPowerToolStripMenuItem
-            // 
-            this.aboutPowerToolStripMenuItem.Image = global::PowerBP.Properties.Resources.infoico;
-            this.aboutPowerToolStripMenuItem.Name = "aboutPowerToolStripMenuItem";
-            this.aboutPowerToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
-            this.aboutPowerToolStripMenuItem.Text = "About Power";
-            this.aboutPowerToolStripMenuItem.Click += new System.EventHandler(this.aboutPowerToolStripMenuItem_Click);
-            // 
             // richTextBox1
             // 
             this.richTextBox1.Location = new System.Drawing.Point(266, 12);
@@ -176,7 +151,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(219, 183);
+            this.button2.Location = new System.Drawing.Point(227, 156);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 3;
@@ -188,7 +163,7 @@
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(4, 188);
+            this.linkLabel1.Location = new System.Drawing.Point(12, 161);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(124, 16);
             this.linkLabel1.TabIndex = 4;
@@ -290,11 +265,11 @@
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(16, 114);
+            this.checkBox1.Location = new System.Drawing.Point(24, 109);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(262, 20);
+            this.checkBox1.Size = new System.Drawing.Size(254, 20);
             this.checkBox1.TabIndex = 13;
-            this.checkBox1.Text = "Warn me before executing the command";
+            this.checkBox1.Text = "Ask me before executing the command";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
@@ -307,7 +282,7 @@
             // 
             this.linkLabel2.AutoSize = true;
             this.linkLabel2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel2.Location = new System.Drawing.Point(5, 167);
+            this.linkLabel2.Location = new System.Drawing.Point(13, 140);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(177, 16);
             this.linkLabel2.TabIndex = 14;
@@ -315,23 +290,27 @@
             this.linkLabel2.Text = "Abort this command and Exit";
             this.linkLabel2.Click += new System.EventHandler(this.linkLabel2_Click);
             // 
-            // GC
+            // toolStripSeparator3
             // 
-            this.GC.Enabled = true;
-            this.GC.Interval = 1800000;
-            this.GC.Tick += new System.EventHandler(this.GC_Tick);
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(224, 6);
             // 
-            // hide
+            // openPowerUIToolStripMenuItem
             // 
-            this.hide.AutoSize = true;
-            this.hide.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hide.Location = new System.Drawing.Point(16, 140);
-            this.hide.Name = "hide";
-            this.hide.Size = new System.Drawing.Size(249, 20);
-            this.hide.TabIndex = 15;
-            this.hide.Text = "Stay always on top without minimizing";
-            this.hide.UseVisualStyleBackColor = true;
-            this.hide.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            this.openPowerUIToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.openPowerUIToolStripMenuItem.Image = global::PowerBP.Properties.Resources.icon;
+            this.openPowerUIToolStripMenuItem.Name = "openPowerUIToolStripMenuItem";
+            this.openPowerUIToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
+            this.openPowerUIToolStripMenuItem.Text = "Open Power User Interface";
+            this.openPowerUIToolStripMenuItem.Click += new System.EventHandler(this.openPowerUIToolStripMenuItem_Click);
+            // 
+            // aboutPowerToolStripMenuItem
+            // 
+            this.aboutPowerToolStripMenuItem.Image = global::PowerBP.Properties.Resources.infoico;
+            this.aboutPowerToolStripMenuItem.Name = "aboutPowerToolStripMenuItem";
+            this.aboutPowerToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
+            this.aboutPowerToolStripMenuItem.Text = "About Power";
+            this.aboutPowerToolStripMenuItem.Click += new System.EventHandler(this.aboutPowerToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -339,9 +318,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.linkLabel1;
-            this.ClientSize = new System.Drawing.Size(304, 212);
+            this.ClientSize = new System.Drawing.Size(314, 192);
             this.ControlBox = false;
-            this.Controls.Add(this.hide);
             this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.datelbl);
             this.Controls.Add(this.label8);
@@ -358,15 +336,14 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(320, 250);
+            this.MaximumSize = new System.Drawing.Size(320, 220);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(320, 250);
+            this.MinimumSize = new System.Drawing.Size(320, 220);
             this.Name = "Form1";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Power Background Process";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
-            this.Deactivate += new System.EventHandler(this.Form1_Deactivate);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.contextMenuStrip1.ResumeLayout(false);
@@ -377,6 +354,7 @@
 
         #endregion
 
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem openPowerUIToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showCommandWindowToolStripMenuItem;
@@ -390,24 +368,21 @@
         private System.Windows.Forms.Label typelbl;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label commandlbl;
+        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label timelbl;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label datelbl;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Timer timer3;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.ToolStripMenuItem abortthisCommandAndExitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem abortAllCommandsAndExitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem infoCMS;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem TimeCMS;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.Timer GC;
-        public System.Windows.Forms.Timer timer1;
-        public System.Windows.Forms.Timer timer2;
-        public System.Windows.Forms.Timer timer3;
-        public System.Windows.Forms.NotifyIcon notifyIcon1;
-        private System.Windows.Forms.CheckBox hide;
-        public System.Windows.Forms.ToolStripMenuItem TimeCMS;
-        public System.Windows.Forms.ToolStripMenuItem infoCMS;
     }
 }
 

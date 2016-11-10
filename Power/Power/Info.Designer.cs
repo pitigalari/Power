@@ -61,7 +61,7 @@
             this.rB1.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
             this.rB1.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
             this.rB1.ForeColor = System.Drawing.Color.White;
-            this.rB1.Location = new System.Drawing.Point(155, 374);
+            this.rB1.Location = new System.Drawing.Point(160, 374);
             this.rB1.Name = "rB1";
             this.rB1.Size = new System.Drawing.Size(62, 31);
             this.rB1.TabIndex = 3;
@@ -78,7 +78,7 @@
             this.rB2.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
             this.rB2.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
             this.rB2.ForeColor = System.Drawing.Color.White;
-            this.rB2.Location = new System.Drawing.Point(223, 374);
+            this.rB2.Location = new System.Drawing.Point(228, 374);
             this.rB2.Name = "rB2";
             this.rB2.Size = new System.Drawing.Size(84, 31);
             this.rB2.TabIndex = 4;
@@ -95,7 +95,7 @@
             this.rB3.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
             this.rB3.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
             this.rB3.ForeColor = System.Drawing.Color.White;
-            this.rB3.Location = new System.Drawing.Point(313, 374);
+            this.rB3.Location = new System.Drawing.Point(318, 374);
             this.rB3.Name = "rB3";
             this.rB3.Size = new System.Drawing.Size(79, 31);
             this.rB3.TabIndex = 5;
@@ -112,7 +112,7 @@
             this.rB4.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
             this.rB4.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
             this.rB4.ForeColor = System.Drawing.Color.White;
-            this.rB4.Location = new System.Drawing.Point(398, 374);
+            this.rB4.Location = new System.Drawing.Point(403, 374);
             this.rB4.Name = "rB4";
             this.rB4.Size = new System.Drawing.Size(90, 31);
             this.rB4.TabIndex = 6;
@@ -129,7 +129,7 @@
             this.rB5.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
             this.rB5.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
             this.rB5.ForeColor = System.Drawing.Color.White;
-            this.rB5.Location = new System.Drawing.Point(494, 374);
+            this.rB5.Location = new System.Drawing.Point(499, 374);
             this.rB5.Name = "rB5";
             this.rB5.Size = new System.Drawing.Size(64, 31);
             this.rB5.TabIndex = 7;
@@ -147,7 +147,7 @@
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.checkBox1.ForeColor = System.Drawing.Color.White;
-            this.checkBox1.Location = new System.Drawing.Point(7, 433);
+            this.checkBox1.Location = new System.Drawing.Point(16, 440);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(298, 20);
             this.checkBox1.TabIndex = 9;
@@ -167,7 +167,7 @@
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.Location = new System.Drawing.Point(588, 429);
+            this.button2.Location = new System.Drawing.Point(590, 435);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(90, 30);
             this.button2.TabIndex = 8;
@@ -182,7 +182,7 @@
             this.time.BackColor = System.Drawing.Color.Transparent;
             this.time.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.time.ForeColor = System.Drawing.Color.White;
-            this.time.Location = new System.Drawing.Point(581, 387);
+            this.time.Location = new System.Drawing.Point(586, 387);
             this.time.Name = "time";
             this.time.Size = new System.Drawing.Size(40, 16);
             this.time.TabIndex = 70;
@@ -195,7 +195,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(63, 387);
+            this.label1.Location = new System.Drawing.Point(68, 387);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 16);
             this.label1.TabIndex = 71;
@@ -203,14 +203,14 @@
             // 
             // borderBottem
             // 
-            this.borderBottem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.borderBottem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.borderBottem.AutoSize = true;
             this.borderBottem.BackColor = System.Drawing.Color.SkyBlue;
             this.borderBottem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderBottem.Cursor = System.Windows.Forms.Cursors.Default;
             this.borderBottem.ForeColor = System.Drawing.Color.SkyBlue;
-            this.borderBottem.Location = new System.Drawing.Point(-19, 423);
+            this.borderBottem.Location = new System.Drawing.Point(-13, 426);
             this.borderBottem.Name = "borderBottem";
             this.borderBottem.Size = new System.Drawing.Size(860, 1);
             this.borderBottem.TabIndex = 72;
@@ -226,7 +226,7 @@
             this.panel1.Controls.Add(this.body2);
             this.panel1.Controls.Add(this.body1);
             this.panel1.Controls.Add(this.head);
-            this.panel1.Location = new System.Drawing.Point(8, 46);
+            this.panel1.Location = new System.Drawing.Point(12, 46);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(670, 320);
             this.panel1.TabIndex = 73;
@@ -238,7 +238,7 @@
             this.body5.BackColor = System.Drawing.Color.Transparent;
             this.body5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.body5.ForeColor = System.Drawing.Color.White;
-            this.body5.Location = new System.Drawing.Point(17, 41);
+            this.body5.Location = new System.Drawing.Point(17, 40);
             this.body5.MaximumSize = new System.Drawing.Size(650, 0);
             this.body5.Name = "body5";
             this.body5.Size = new System.Drawing.Size(643, 112);
@@ -269,7 +269,7 @@
             this.body3.Location = new System.Drawing.Point(17, 40);
             this.body3.MaximumSize = new System.Drawing.Size(650, 0);
             this.body3.Name = "body3";
-            this.body3.Size = new System.Drawing.Size(646, 256);
+            this.body3.Size = new System.Drawing.Size(647, 272);
             this.body3.TabIndex = 78;
             this.body3.Text = resources.GetString("body3.Text");
             // 
@@ -329,8 +329,8 @@
             // 
             // borderTop
             // 
-            this.borderTop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.borderTop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.borderTop.AutoSize = true;
             this.borderTop.BackColor = System.Drawing.Color.SkyBlue;
             this.borderTop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -365,7 +365,7 @@
             this.prev.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.prev.ForeColor = System.Drawing.Color.White;
             this.prev.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.prev.Location = new System.Drawing.Point(7, 370);
+            this.prev.Location = new System.Drawing.Point(12, 370);
             this.prev.Name = "prev";
             this.prev.Size = new System.Drawing.Size(50, 50);
             this.prev.TabIndex = 2;
@@ -386,7 +386,7 @@
             this.next.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.next.ForeColor = System.Drawing.Color.White;
             this.next.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.next.Location = new System.Drawing.Point(627, 370);
+            this.next.Location = new System.Drawing.Point(632, 370);
             this.next.Name = "next";
             this.next.Size = new System.Drawing.Size(50, 50);
             this.next.TabIndex = 1;
@@ -400,7 +400,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.BackgroundImage = global::Power.Properties.Resources.back;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(684, 462);
+            this.ClientSize = new System.Drawing.Size(694, 472);
             this.Controls.Add(this.next);
             this.Controls.Add(this.prev);
             this.Controls.Add(this.ico);

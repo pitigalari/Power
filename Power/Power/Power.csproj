@@ -105,23 +105,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="about.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="about.Designer.cs">
-      <DependentUpon>about.cs</DependentUpon>
-    </Compile>
     <Compile Include="action.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="action.Designer.cs">
       <DependentUpon>action.cs</DependentUpon>
     </Compile>
-    <Compile Include="home.cs">
+    <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="home.Designer.cs">
-      <DependentUpon>home.cs</DependentUpon>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Info.cs">
       <SubType>Form</SubType>
@@ -143,14 +137,11 @@
     <Compile Include="Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="about.resx">
-      <DependentUpon>about.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="action.resx">
       <DependentUpon>action.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="home.resx">
-      <DependentUpon>home.cs</DependentUpon>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Info.resx">
       <DependentUpon>Info.cs</DependentUpon>
@@ -188,12 +179,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
-    <None Include="Resources\uac1.png" />
-    <None Include="Resources\uac.png" />
-    <None Include="Resources\close3.png" />
-    <None Include="Resources\close2.png" />
-    <None Include="Resources\close1.png" />
-    <None Include="Resources\close.png" />
     <None Include="Resources\back2.bmp" />
     <None Include="Resources\helpicowhite.png" />
     <None Include="Resources\panel.png" />

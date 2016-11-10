@@ -11,7 +11,7 @@ using System.Resources;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("RoshSoft Co.")]
 [assembly: AssemblyProduct("PowerBP")]
-[assembly: AssemblyCopyright("Copyright © 2016 RoshSoft Co.")]
+[assembly: AssemblyCopyright("Copyright © 2015 RoshSoft Co.")]
 [assembly: AssemblyTrademark("RoshSoft Co.")]
 [assembly: AssemblyCulture("")]
 
@@ -33,6 +33,6 @@ using System.Resources;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("7.16.11.10")]
-[assembly: AssemblyFileVersion("7.16.11.10")]
+[assembly: AssemblyVersion("7.15.09.26")]
+[assembly: AssemblyFileVersion("7.15.09.26")]
 [assembly: NeutralResourcesLanguageAttribute("en-US")]

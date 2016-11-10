@@ -11,7 +11,6 @@ using System.Diagnostics;
 using Power.Properties;
 using System.Runtime.InteropServices;
 using System.Media;
-using System.Security.Principal;
 
 namespace Power
 {
@@ -23,15 +22,14 @@ namespace Power
             type = a;
         }
 
-        bool admin = home.admin;
         Process check = new Process();
         string type = "NA";
         string command;
         int h;
         int m;
         int s;
-        int ask = 0;
-        string location = Program.location;
+        int ask = 1;
+        string location;
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -79,10 +77,6 @@ namespace Power
 
         private void action_Shown(object sender, EventArgs e)
         {
-            if (admin)
-            {
-                this.Text = "Power - Action Panel : [Administrator]";
-            }
             date.Text = DateTime.Now.ToLongDateString();
             time.Text = DateTime.Now.ToShortTimeString();
             if (!Directory.Exists(location))
@@ -105,10 +99,10 @@ namespace Power
 
             ToolTip tip4 = new ToolTip();
             tip4.SetToolTip(this.radioButton2, "Method 2 : Countdown Trigger");
-
             #endregion
-
-
+            location = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "RoshSoft\\");
+            ask = 1;
+            checkBox1.Checked = true;
             check.StartInfo.FileName = "cmd.exe";
             check.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             YYnud.Minimum = DateTime.Now.Year;
@@ -156,44 +150,40 @@ namespace Power
                 Mnud.Minimum = 0;
             }
 
-            if (type == "SD")
-            {
-                command = "Shutdown";
-            }
-            else if (type == "R")
-            {
-                command = "Restart";
-            }
-            else if (type == "H")
-            {
-                command = "Hibernate";
-            }
-            else if (type == "SB")
-            {
-                command = "Standby";
-            }
-            else if (type == "lock")
-            {
-                command = "Lock";
-            }
-            else if (type == "LO")
-            {
-                command = "Log Off";
-            }
-            else if (type == "SO")
-            {
-                command = "Screen Off";
-            }
-            else
-            {
-                command = "-Select Command-";
-            }
-            comboBox1.Text = command;
-            if (type == "SD" || type == "R" || type == "LO")
-            {
-                ask = 1;
-                checkBox1.Checked = true;
-            }
+                if (type == "SD")
+                {
+                    command = "Shutdown";
+                }
+                else if (type == "R")
+                {
+                    command = "Restart";
+                }
+                else if (type == "H")
+                {
+                    command = "Hibernate";
+                }
+                else if (type == "SB")
+                {
+                    command = "Standby";
+                }
+                else if (type == "lock")
+                {
+                    command = "Lock";
+                }
+                else if (type == "LO")
+                {
+                    command = "Log Off";
+                }
+                else if (type == "SO")
+                {
+                    command = "Screen Off";
+                }
+                else
+                {
+                    command = "-Select Command-";
+                }
+                comboBox1.Text = command;
+            
 
             if (Properties.Settings.Default.action == true)
             {
@@ -270,11 +260,6 @@ namespace Power
             {
                 Directory.CreateDirectory(location);
             }
-
-            if (checkBox1.Checked)
-                ask = 1;
-            else
-                ask = 0;
 
             #region CT
             if (radioButton2.Checked == true)
@@ -362,26 +347,9 @@ namespace Power
                         h = Convert.ToInt32(numericUpDown1.Value) * 60;
                         m = Convert.ToInt32(numericUpDown2.Value);
                         s = h + m;
-
-                        if (!File.Exists("PowerBP.exe"))
-                        {
-                            MessageBox.Show("Failed to issue the command due to a failure in the Power Background Process. Try reinstalling the application.", "PowerBP Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            File.WriteAllText(location + "power.dll", "CT\r\n" + type + "\r\n" + s.ToString() + "\r\n" + ask.ToString());
-                            try
-                            {
-                                Process.Start(@"PowerBP.exe");
-                                Application.Exit();
-                            }
-                            catch
-                            {
-                                MessageBox.Show("Failed to start Power Background Process. Please try again.", "PowerBP Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                this.Close();
-                            }
-                        }
-
+                        File.WriteAllText(location + "power.dll", "CT\r\n" + type + "\r\n" + s.ToString() + "\r\n" + ask.ToString());
+                        Process.Start(@"PowerBP.exe");
+                        Application.Exit();
                     }
                 }
             }
@@ -477,32 +445,9 @@ namespace Power
                                     }
                                     else
                                     {
-
-                                        if (!File.Exists("PowerBP.exe"))
-                                        {
-                                            MessageBox.Show("Failed to issue the command due to a failure in the Power Background Process. Try reinstalling the application.", "PowerBP Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        }
-                                        else
-                                        {
-                                            File.WriteAllText(location + "power.dll", "ST\r\n" + type + "\r\n" + Hnud.Value.ToString() + "\r\n" + Mnud.Value.ToString() + "\r\n" + DDnud.Value.ToString() + "\r\n" + MMnud.Value.ToString() + "\r\n" + YYnud.Value.ToString() + "\r\n" + ask.ToString());
-                                            if (!File.Exists("PowerBP.exe"))
-                                            {
-                                                MessageBox.Show("Failed to issue the command due to a failure in the Power Background Process. Try reinstalling the application.", "PowerBP Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                            }
-                                            else
-                                            {
-                                                try
-                                                {
-                                                    Process.Start(@"PowerBP.exe");
-                                                    Application.Exit();
-                                                }
-                                                catch
-                                                {
-                                                    MessageBox.Show("Failed to start Power Background Process. Please try again.", "PowerBP Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                                    this.Close();
-                                                }
-                                            }
-                                        }
+                                        File.WriteAllText(location + "power.dll", "ST\r\n" + type + "\r\n" + Hnud.Value.ToString() + "\r\n" + Mnud.Value.ToString() + "\r\n" + DDnud.Value.ToString() + "\r\n" + MMnud.Value.ToString() + "\r\n" + YYnud.Value.ToString() + "\r\n" + ask.ToString());
+                                        Process.Start(@"PowerBP.exe");
+                                        Application.Exit();
                                     }
                                 }
                             }
@@ -514,17 +459,9 @@ namespace Power
                                 }
                                 else
                                 {
-
-                                    if (!File.Exists("PowerBP.exe"))
-                                    {
-                                        MessageBox.Show("Failed to issue the command due to a failure in the Power Background Process. Try reinstalling the application.", "PowerBP Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    }
-                                    else
-                                    {
-                                        File.WriteAllText(location + "power.dll", "ST\r\n" + type + "\r\n" + Hnud.Value.ToString() + "\r\n" + Mnud.Value.ToString() + "\r\n" + DDnud.Value.ToString() + "\r\n" + MMnud.Value.ToString() + "\r\n" + YYnud.Value.ToString() + "\r\n" + ask.ToString());
-                                        Process.Start(@"PowerBP.exe");
-                                        Application.Exit();
-                                    }
+                                    File.WriteAllText(location + "power.dll", "ST\r\n" + type + "\r\n" + Hnud.Value.ToString() + "\r\n" + Mnud.Value.ToString() + "\r\n" + DDnud.Value.ToString() + "\r\n" + MMnud.Value.ToString() + "\r\n" + YYnud.Value.ToString() + "\r\n" + ask.ToString());
+                                    Process.Start(@"PowerBP.exe");
+                                    Application.Exit();
                                 }
                             }
                         }
@@ -536,16 +473,9 @@ namespace Power
                             }
                             else
                             {
-                                if (!File.Exists("PowerBP.exe"))
-                                {
-                                    MessageBox.Show("Failed to issue the command due to a failure in the Power Background Process. Try reinstalling the application.", "PowerBP Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
-                                else
-                                {
-                                    File.WriteAllText(location + "power.dll", "ST\r\n" + type + "\r\n" + Hnud.Value.ToString() + "\r\n" + Mnud.Value.ToString() + "\r\n" + DDnud.Value.ToString() + "\r\n" + MMnud.Value.ToString() + "\r\n" + YYnud.Value.ToString() + "\r\n" + ask.ToString());
-                                    Process.Start(@"PowerBP.exe");
-                                    Application.Exit();
-                                }
+                                File.WriteAllText(location + "power.dll", "ST\r\n" + type + "\r\n" + Hnud.Value.ToString() + "\r\n" + Mnud.Value.ToString() + "\r\n" + DDnud.Value.ToString() + "\r\n" + MMnud.Value.ToString() + "\r\n" + YYnud.Value.ToString() + "\r\n" + ask.ToString());
+                                Process.Start(@"PowerBP.exe");
+                                Application.Exit();
                             }
                         }
                     }
@@ -557,16 +487,9 @@ namespace Power
                         }
                         else
                         {
-                            if (!File.Exists("PowerBP.exe"))
-                            {
-                                MessageBox.Show("Failed to issue the command due to a failure in the Power Background Process. Try reinstalling the application.", "PowerBP Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                            else
-                            {
-                                File.WriteAllText(location + "power.dll", "ST\r\n" + type + "\r\n" + Hnud.Value.ToString() + "\r\n" + Mnud.Value.ToString() + "\r\n" + DDnud.Value.ToString() + "\r\n" + MMnud.Value.ToString() + "\r\n" + YYnud.Value.ToString() + "\r\n" + ask.ToString());
-                                Process.Start(@"PowerBP.exe");
-                                Application.Exit();
-                            }
+                            File.WriteAllText(location + "power.dll", "ST\r\n" + type + "\r\n" + Hnud.Value.ToString() + "\r\n" + Mnud.Value.ToString() + "\r\n" + DDnud.Value.ToString() + "\r\n" + MMnud.Value.ToString() + "\r\n" + YYnud.Value.ToString() + "\r\n" + ask.ToString());
+                            Process.Start(@"PowerBP.exe");
+                            Application.Exit();
                         }
                     }
                 }
@@ -579,22 +502,14 @@ namespace Power
                     }
                     else
                     {
-                        if (!File.Exists("PowerBP.exe"))
-                        {
-                            MessageBox.Show("Failed to issue the command due to a failure in the Power Background Process. Try reinstalling the application.", "PowerBP Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            File.WriteAllText(location + "power.dll", "ST\r\n" + type + "\r\n" + Hnud.Value.ToString() + "\r\n" + Mnud.Value.ToString() + "\r\n" + DDnud.Value.ToString() + "\r\n" + MMnud.Value.ToString() + "\r\n" + YYnud.Value.ToString() + "\r\n" + ask.ToString());
-                            Process.Start(@"PowerBP.exe");
-                            Application.Exit();
-                        }
+                        File.WriteAllText(location + "power.dll", "ST\r\n" + type + "\r\n" + Hnud.Value.ToString() + "\r\n" + Mnud.Value.ToString() + "\r\n" + DDnud.Value.ToString() + "\r\n" + MMnud.Value.ToString() + "\r\n" + YYnud.Value.ToString() + "\r\n" + ask.ToString());
+                        Process.Start(@"PowerBP.exe");
+                        Application.Exit();
                     }
                 }
             }
             #endregion
         }
-
 
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -634,9 +549,9 @@ namespace Power
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked == false && (type == "SD" || type == "R" || type == "LO"))
+            if (checkBox1.Checked == false)
             {
-                if (MessageBox.Show("Commands will be executed without giving you a final warning which may cause lost of any unsaved data. Do you wish to proceed?", "Confirm Action", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                if (MessageBox.Show("Commands will be executed without your permission which may cause lost of any unsaved data. Use with your own risk. Do you wish to proceed?", "Confirm Action", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     ask = 0;
                 }
@@ -844,7 +759,7 @@ namespace Power
                 Application.OpenForms["Info"].Close();
                 new Info(3).Show();
             }
-
+            
         }
 
     }
